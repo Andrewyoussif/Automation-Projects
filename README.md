@@ -1,8 +1,8 @@
 # The Internet Website – Selenium Automation Testing Framework
 
-A Java-based UI test automation project built with **Selenium WebDriver**, **TestNG**, and the **Page Object Model (POM)**. The framework automates a range of interactive features on [The Internet](https://the-internet.herokuapp.com/) and demonstrates practical browser automation, reusable test utilities, and test reporting with Allure.
+A Java-based UI test automation project built with **Selenium WebDriver**, **TestNG**, and the **Page Object Model (POM)**. The framework automates interactive features on [The Internet](https://the-internet.herokuapp.com/) and demonstrates browser automation, reusable test utilities, and test reporting with Allure.
 
-> **Project focus:** building maintainable UI automation tests for common web application behaviors, including authentication, dynamic content, browser alerts, frames, windows, keyboard interactions, and file uploads.
+> **Project focus:** maintainable UI automation for authentication, dynamic content, browser alerts, frames, windows, keyboard interactions, dropdowns, and file uploads.
 
 ## Tech Stack
 
@@ -17,65 +17,134 @@ A Java-based UI test automation project built with **Selenium WebDriver**, **Tes
 
 ## Framework Design
 
-The project follows the **Page Object Model (POM)** to keep page-specific locators and actions separate from test scenarios.
+The project follows the **Page Object Model (POM)** to separate page-specific locators and actions from test scenarios.
 
-- **`pages/`** – Page classes that represent application pages and expose actions or information used by tests.
-- **`utils/`** – Reusable Selenium helper methods and browser navigation/window management.
+- **`src/main/java/pages/`** – Page classes representing application pages and their available actions.
+- **`src/main/java/utils/`** – Reusable Selenium helper methods and browser navigation/window management.
 - **`src/test/java/`** – Test classes grouped by the feature under test.
-- **`src/test/resources/`** – Test-related configuration, including Allure properties.
+- **`src/test/resources/`** – Test configuration, including Allure properties.
 
 ### Reusable utilities
 
-- `SelUtils` centralizes common Selenium operations such as clicking elements, entering text, selecting dropdown options, handling JavaScript alerts, switching frames, uploading files, and scrolling to elements.
-- `WindowManager` provides browser navigation actions and switching between windows by title.
-- `BaseTests` initializes the Chrome browser, navigates to the application home page before each test, and closes the browser after the test class.
+- **`SelUtils`** centralizes common Selenium operations such as clicking elements, entering text, selecting dropdown options, handling JavaScript alerts, switching frames, uploading files, and scrolling to elements.
+- **`WindowManager`** provides browser navigation actions and switching between windows by title.
+- **`BaseTests`** initializes Chrome, navigates to the application home page before each test, and closes the browser after the test class.
 
 ## Automated Test Coverage
 
-The suite contains **20 TestNG test methods** covering the following areas:
+The project currently contains **20 TestNG test methods** across **13 test classes**.
 
-| Feature | Coverage |
-|---|---|
-| Authentication | Valid login and successful navigation to the secure area |
-| JavaScript Alerts | Alert text, accepting and dismissing confirmation dialogs, and submitting prompt text |
-| Dropdowns | Selecting an option and verifying the selected value |
-| Entry Ad | Closing the modal and checking the page header |
-| Frames | Reading content from nested left and bottom frames |
-| Mouse Hover | Hovering over a figure and checking its caption, name, and profile link |
-| Inputs | Verifying the Inputs page header |
-| JavaScript Executor & Actions | Scrolling to a table using JavaScript Executor and the Actions class |
-| Keyboard Actions | Typing text, using Shift, and pressing Backspace |
-| Browser Navigation | Back, forward, refresh, and navigating to another URL |
-| Multiple Windows | Switching to a newly opened window and verifying its heading |
-| File Upload | Uploading a file and verifying the uploaded filename |
-| Dynamic Loading & Waits | Handling dynamically loaded content in both examples and verifying the result |
+| Feature | Test methods | Coverage |
+|---|---:|---|
+| JavaScript Alerts | 3 | Alert handling, confirmation dialogs, prompt text |
+| Keyboard Actions | 3 | Text entry, Shift key interaction, Backspace |
+| Frames | 2 | Left and bottom frame content |
+| Dynamic Loading & Waits | 2 | Waiting for dynamically loaded content |
+| JavaScript Executor & Actions | 2 | Scrolling to a table using JavaScript and Actions |
+| Authentication | 1 | Login and secure-area navigation |
+| Dropdowns | 1 | Selecting and verifying an option |
+| Entry Ad | 1 | Handling the modal and checking the page header |
+| Mouse Hover | 1 | Hover interaction and figure details |
+| Inputs | 1 | Inputs page verification |
+| Browser Navigation | 1 | Back, forward, refresh, and URL navigation |
+| Multiple Windows | 1 | Switching to a newly opened window |
+| File Upload | 1 | Uploading a file and verifying its filename |
+| **Total** | **20** | **13 test classes** |
+
+### Test Execution Summary
+
+The repository contains 20 automated test methods. The table above describes the test suite implemented in the source code; it is **not a claim that all 20 tests passed in the latest run**. Actual Passed / Failed / Skipped counts should be added from a fresh TestNG/Allure execution report.
+
+After running the suite, record the real results here:
+
+| Execution metric | Latest run |
+|---|---:|
+| Total | 20 test methods in source |
+| Passed | Add from latest Allure report |
+| Failed | Add from latest Allure report |
+| Broken | Add from latest Allure report, if shown |
+| Skipped | Add from latest Allure report |
+
+## Allure Report
+
+Allure is integrated with TestNG to provide a visual report of test execution.
+
+Run the tests first:
+
+```bash
+mvn clean test
+```
+
+The configured Allure results directory is:
+
+```text
+target/allure-results
+```
+
+Open an interactive report:
+
+```bash
+allure serve target/allure-results
+```
+
+Or generate a static report:
+
+```bash
+allure generate target/allure-results --clean -o target/allure-report
+allure open target/allure-report
+```
+
+Make sure the Allure command-line tool is installed and available on your system.
+
+### Allure Report Screenshots
+
+Add screenshots from an actual execution to make the report easy to review without running the project.
+
+Suggested screenshots:
+
+1. **Overview:** the Allure dashboard showing the real Passed / Failed / Broken / Skipped totals.
+2. **Behaviors or Suites:** the list of executed test groups and test cases.
+3. **Test detail (optional):** an individual test showing its steps, attachments, or failure details where applicable.
+
+Save the images in a folder such as `docs/images/`, then add them to this section using relative Markdown paths, for example:
+
+```markdown
+![Allure report overview](docs/images/allure-overview.png)
+![Allure test suites](docs/images/allure-suites.png)
+```
+
+Only add screenshots from a real test run, and make sure any personal file paths or sensitive information are not visible.
 
 ## Project Structure
 
 ```text
-TheInternetWebSiteProject/
+Automation-Projects/
+├── .gitignore
 ├── pom.xml
 ├── README.md
 └── src/
     ├── main/
     │   └── java/
     │       ├── pages/
-    │       │   ├── HomePage.java
-    │       │   ├── LoginPage.java
-    │       │   ├── SecureAreaPage.java
     │       │   ├── DropDownPage.java
-    │       │   ├── HoversPage.java
-    │       │   ├── JavaScriptAlertsPage.java
     │       │   ├── DynamicLoadingPage.java
+    │       │   ├── EntryAdPage.java
+    │       │   ├── FileUploadPage.java
+    │       │   ├── HomePage.java
+    │       │   ├── HoversPage.java
+    │       │   ├── InputsPage.java
+    │       │   ├── JavaScriptAlertsPage.java
+    │       │   ├── KeyPressesPage.java
+    │       │   ├── LoginPage.java
+    │       │   ├── MultipleWindowsPage.java
     │       │   └── ...
     │       └── utils/
     │           ├── SelUtils.java
     │           └── WindowManager.java
     └── test/
         ├── java/
-        │   ├── base/
-        │   │   └── BaseTests.java
         │   ├── alerts/
+        │   ├── base/
         │   ├── dropDown/
         │   ├── entryAd/
         │   ├── frames/
@@ -98,9 +167,9 @@ Before running the tests, make sure you have:
 1. **JDK 26** installed and configured. The Maven compiler source and target are set to `26` in `pom.xml`.
 2. **Maven** installed and available from your terminal.
 3. **Google Chrome** installed.
-4. A working internet connection to access the target website and resolve Maven dependencies.
+4. An internet connection to access the target website and resolve Maven dependencies.
 
-Selenium 4.49.0 uses Selenium Manager to help manage browser drivers. If automatic driver management does not work in your environment, configure a compatible ChromeDriver.
+Selenium Manager can help manage browser drivers. If automatic driver management does not work in your environment, configure a compatible ChromeDriver.
 
 ## Run the Tests
 
@@ -108,43 +177,21 @@ Clone the repository:
 
 ```bash
 git clone <YOUR_REPOSITORY_URL>
-cd TheInternetWebSiteProject
+cd Automation-Projects
 ```
 
-Run the complete TestNG suite through Maven:
+Run the complete suite:
 
 ```bash
 mvn clean test
 ```
 
-Maven Surefire runs the tests and the configured Allure results directory is:
-
-```text
-target/allure-results
-```
-
-## Allure Report
-
-After test execution, generate and open an Allure report using the Allure command-line tool:
-
-```bash
-allure serve target/allure-results
-```
-
-Alternatively, generate a static report:
-
-```bash
-allure generate target/allure-results --clean -o target/allure-report
-allure open target/allure-report
-```
-
-Make sure the Allure command-line tool is installed and available on your system before running these commands.
-
 ## Notes
 
 - The tests launch **Chrome** from the shared `BaseTests` setup.
 - The file-upload test currently uses a local Windows file path. Update the `path` and `fileName` values in `UploadFilesTests.java` to point to a file that exists on your machine before running that test.
-- The project targets the live demo website. Test results may be affected by website availability or changes to its content.
+- Test results may be affected by the availability of the target demo website or changes to its content.
+- IDE settings and generated Allure/report output are excluded from Git tracking through `.gitignore`.
 
 ## What This Project Demonstrates
 
@@ -152,7 +199,7 @@ Make sure the Allure command-line tool is installed and available on your system
 - Creating reusable Selenium helper methods to reduce duplicated actions.
 - Automating common web UI components and browser behaviors.
 - Working with dynamic elements, waits, alerts, frames, and multiple windows.
-- Using TestNG annotations, assertions, and test severity metadata.
+- Using TestNG annotations and assertions.
 - Integrating Allure to produce readable test execution reports.
 
 ---
