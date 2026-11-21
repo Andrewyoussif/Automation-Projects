@@ -100,17 +100,16 @@ Make sure the Allure command-line tool is installed and available on your system
 
 Add screenshots from an actual execution to make the report easy to review without running the project.
 
-Suggested screenshots:
+## Allure Test Execution Reports
 
-1. **Overview:** the Allure dashboard showing the real Passed / Failed / Broken / Skipped totals.
-2. **Behaviors or Suites:** the list of executed test groups and test cases.
-3. **Test detail (optional):** an individual test showing its steps, attachments, or failure details where applicable.
+### 1. Allure Overview
+![Allure Overview](docs/images/1stPic.png)
 
-Save the images in a folder such as `docs/images/`, then add them to this section using relative Markdown paths, for example:
+### 2. Allure Test Suites
+![Allure Test Suites](docs/images/2ndPic.png)
 
-```markdown
-![Allure report overview](docs/images/allure-overview.png)
-![Allure test suites](docs/images/allure-suites.png)
+### 3. Allure Test Graphs
+![Allure Test Details](docs/images/3rdPic.png)
 ```
 
 Only add screenshots from a real test run, and make sure any personal file paths or sensitive information are not visible.
