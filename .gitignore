@@ -37,3 +37,12 @@ build/
 
 ### Mac OS ###
 .DS_Store
+# IDE files
+.idea/
+*.iml
+
+# Allure generated results
+allure-results/
+
+# Generated reports
+reports/
