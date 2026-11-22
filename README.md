@@ -57,13 +57,13 @@ The repository contains 20 automated test methods. The table above describes the
 
 After running the suite, record the real results here:
 
-| Execution metric | Latest run |
-|---|---:|
-| Total | 20 test methods in source |
-| Passed | Add from latest Allure report |
-| Failed | Add from latest Allure report |
-| Broken | Add from latest Allure report, if shown |
-| Skipped | Add from latest Allure report |
+| Execution metric |                Latest run |
+|---|--------------------------:|
+| Total | 20  |
+| Passed |                        20 |
+| Failed |                         0 |
+| Broken |                         0 |
+| Skipped |                         0 |
 
 ## Allure Report
 
@@ -175,7 +175,7 @@ Selenium Manager can help manage browser drivers. If automatic driver management
 Clone the repository:
 
 ```bash
-git clone <YOUR_REPOSITORY_URL>
+git clone https://github.com/Andrewyoussif/Automation-Projects.git
 cd Automation-Projects
 ```
 
