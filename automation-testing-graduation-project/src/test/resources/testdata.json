@@ -1,0 +1,10 @@
+{
+  "validUser": { "username": "Admin", "password": "admin123" },
+  "invalidLogins": [
+    { "username": "wrongUser", "password": "wrongPass" },
+    { "username": "Admin", "password": "badPassword1" }
+  ],
+  "nonExistingEmployee": "Zzxqwvbn Nonexistent",
+  "newEmployee": { "firstName": "Andrew", "lastName": "Tester" },
+  "sidebarItems": ["Admin", "PIM", "Leave", "Time", "Recruitment", "My Info", "Performance", "Dashboard", "Directory"]
+}
